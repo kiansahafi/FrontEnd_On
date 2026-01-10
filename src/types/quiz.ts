@@ -1,9 +1,17 @@
 // Type definitions for the Quiz application
 
+export interface ShoeColor {
+  name: string;
+  hex: string;
+}
+
 export interface Shoe {
   id: string;
   name: string;
   rating: number;
+  description: string;
+  price: string;
+  colors: ShoeColor[];
 }
 
 export interface RatingIncrease {

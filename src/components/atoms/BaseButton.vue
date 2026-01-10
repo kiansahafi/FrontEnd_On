@@ -74,14 +74,29 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--medium {
-    padding: $spacing-md $spacing-xl;
-    font-size: $font-size-sm;
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-xs;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: $spacing-md $spacing-xl;
+      font-size: $font-size-sm;
+    }
   }
 
   &--large {
-    padding: $spacing-lg $spacing-3xl;
-    font-size: $font-size-base;
-    letter-spacing: 2px;
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-sm;
+    letter-spacing: 1px;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: $spacing-lg $spacing-2xl;
+      font-size: $font-size-base;
+      letter-spacing: 2px;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      padding: $spacing-lg $spacing-3xl;
+    }
   }
 }
 </style>

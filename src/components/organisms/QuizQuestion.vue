@@ -138,13 +138,14 @@ defineEmits<{
 
   &__answers {
     display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
     width: 100%;
     max-width: 700px;
 
     @media (min-width: $breakpoint-sm) {
-      flex-direction: row;
+      flex-wrap: nowrap;
       gap: $spacing-lg;
     }
 

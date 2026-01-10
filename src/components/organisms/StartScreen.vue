@@ -57,9 +57,13 @@ defineEmits<{
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 86px);
-    padding: $spacing-2xl $spacing-xl;
+    padding: $spacing-xl $spacing-lg;
     position: relative;
     z-index: 2;
+
+    @media (min-width: $breakpoint-sm) {
+      padding: $spacing-2xl $spacing-xl;
+    }
 
     @media (min-width: $breakpoint-md) {
       flex-direction: row;
@@ -75,11 +79,16 @@ defineEmits<{
   }
 
   &__text-section {
-    flex: 1;
+    flex: 0 0 auto;
     z-index: 3;
-    padding-bottom: $spacing-2xl;
+    padding-bottom: $spacing-md;
+
+    @media (min-width: $breakpoint-sm) {
+      padding-bottom: $spacing-lg;
+    }
 
     @media (min-width: $breakpoint-md) {
+      flex: 1;
       padding-bottom: 0;
       max-width: 50%;
     }
@@ -88,18 +97,19 @@ defineEmits<{
   &__title {
     font-family: $font-primary;
     font-weight: $font-weight-light;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     line-height: 1.2;
     color: $color-text-dark;
-    margin: 0 0 $spacing-xl;
+    margin: 0 0 $spacing-lg;
     letter-spacing: -0.5px;
 
     @media (min-width: $breakpoint-sm) {
-      font-size: 3rem;
+      font-size: 2.25rem;
+      margin: 0 0 $spacing-xl;
     }
 
     @media (min-width: $breakpoint-md) {
-      font-size: 3.5rem;
+      font-size: 3rem;
     }
 
     @media (min-width: $breakpoint-lg) {
@@ -112,38 +122,57 @@ defineEmits<{
   }
 
   &__button {
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
+
+    @media (min-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+    }
   }
 
   &__subtitle {
     font-family: $font-secondary;
-    font-size: $font-size-sm;
+    font-size: $font-size-xs;
     color: $color-gray-dark;
     margin: 0;
     letter-spacing: 0.5px;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
   }
 
   &__image-section {
     flex: 1;
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-end;
     position: relative;
-    min-height: 400px;
+    min-height: 300px;
+    margin-right: -$spacing-lg;
+
+    @media (min-width: $breakpoint-sm) {
+      min-height: 400px;
+      margin-right: -$spacing-xl;
+    }
 
     @media (min-width: $breakpoint-md) {
       min-height: auto;
       justify-content: flex-end;
       align-items: center;
+      margin-right: 0;
     }
   }
 
   &__runner-image {
     max-width: 100%;
-    max-height: 70vh;
+    max-height: 55vh;
     object-fit: contain;
     position: relative;
     z-index: 2;
+
+    @media (min-width: $breakpoint-sm) {
+      max-height: 65vh;
+    }
 
     @media (min-width: $breakpoint-md) {
       max-height: 80vh;
@@ -163,11 +192,12 @@ defineEmits<{
     height: 30%;
     background: linear-gradient(
       to top,
-      rgba(247, 247, 247, 1) 0%,
-      rgba(247, 247, 247, 0.8) 30%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 20%,
+      rgba(247, 247, 247, 0.6) 50%,
       rgba(247, 247, 247, 0) 100%
     );
-    z-index: 1;
+    z-index: 3;
     pointer-events: none;
   }
 }

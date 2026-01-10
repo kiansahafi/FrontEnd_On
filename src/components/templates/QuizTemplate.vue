@@ -61,7 +61,7 @@ defineProps<Props>();
 
   &--results {
     .quiz-template__background {
-      background-color: $color-bg-page;
+      background-color: rgb(255, 255, 255);
     }
   }
 }
