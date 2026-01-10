@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { QuizState } from "@/types/quiz";
+import AppHeader from "@/components/molecules/AppHeader.vue";
 
 interface Props {
   state: QuizState;
@@ -10,6 +11,7 @@ defineProps<Props>();
 
 <template>
   <div class="quiz-template" :class="`quiz-template--${state}`">
+    <AppHeader />
     <div class="quiz-template__background"></div>
     <div class="quiz-template__content">
       <slot></slot>
@@ -25,11 +27,12 @@ defineProps<Props>();
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: $color-bg-page;
 
   &__background {
     @include full-screen-bg;
-    z-index: -1;
-    transition: background-image $transition-slow;
+    z-index: 0;
+    transition: background-color $transition-slow;
   }
 
   &__content {
@@ -40,27 +43,14 @@ defineProps<Props>();
   // State-specific backgrounds
   &--start {
     .quiz-template__background {
-      background-image: url("@/assets/Start Screen.jpg");
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.4) 0%,
-          rgba(0, 0, 0, 0.6) 100%
-        );
-      }
+      background-color: $color-bg-page;
     }
   }
 
   &--question {
     .quiz-template__background {
       background-image: url("@/assets/Question.jpg");
+      background-color: $color-bg-page;
 
       &::after {
         content: "";
@@ -81,6 +71,7 @@ defineProps<Props>();
   &--loading {
     .quiz-template__background {
       background-image: url("@/assets/Loading Results.jpg");
+      background-color: $color-bg-page;
 
       &::after {
         content: "";
@@ -100,7 +91,7 @@ defineProps<Props>();
 
   &--results {
     .quiz-template__background {
-      background-color: $color-gray-light;
+      background-color: $color-bg-page;
     }
   }
 }

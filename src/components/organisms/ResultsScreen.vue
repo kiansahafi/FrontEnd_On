@@ -55,9 +55,9 @@ defineEmits<{
 @use "@/assets/styles/mixins" as *;
 
 .results-screen {
-  min-height: 100vh;
-  padding: $spacing-3xl $spacing-xl;
-  background-color: $color-gray-light;
+  min-height: calc(100vh - 86px);
+  padding: 120px $spacing-xl $spacing-3xl;
+  background-color: $color-bg-page;
   animation: fadeIn $transition-normal forwards;
 
   &__content {

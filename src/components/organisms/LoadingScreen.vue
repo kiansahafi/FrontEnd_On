@@ -34,8 +34,8 @@ import BaseText from "@/components/atoms/BaseText.vue";
 .loading-screen {
   @include flex-column-center;
   justify-content: center;
-  min-height: 100vh;
-  padding: $spacing-xl;
+  min-height: calc(100vh - 86px);
+  padding: 86px $spacing-xl $spacing-xl;
   text-align: center;
   animation: fadeIn $transition-normal forwards;
 

@@ -56,13 +56,13 @@ defineEmits<{
 
 .quiz-question {
   @include flex-column-center;
-  min-height: 100vh;
-  padding: $spacing-xl;
+  min-height: calc(100vh - 86px);
+  padding: 120px $spacing-xl $spacing-xl;
   animation: fadeIn $transition-normal forwards;
 
   &__header {
     position: fixed;
-    top: $spacing-xl;
+    top: 120px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;

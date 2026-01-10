@@ -33,11 +33,11 @@ withDefaults(defineProps<Props>(), {
   border-radius: 0;
 
   &--primary {
-    background-color: $color-primary;
-    color: $color-text-light;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 
     &:hover:not(:disabled) {
-      background-color: color.adjust($color-primary, $lightness: 10%);
+      background-color: rgb(30, 30, 30);
       transform: translateY(-2px);
     }
 
@@ -79,8 +79,9 @@ withDefaults(defineProps<Props>(), {
   }
 
   &--large {
-    padding: $spacing-lg $spacing-2xl;
+    padding: $spacing-lg $spacing-3xl;
     font-size: $font-size-base;
+    letter-spacing: 2px;
   }
 }
 </style>
