@@ -49,43 +49,13 @@ defineProps<Props>();
 
   &--question {
     .quiz-template__background {
-      background-image: url("@/assets/Question.jpg");
-      background-color: $color-bg-page;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(0, 0, 0, 0.7) 100%
-        );
-      }
+      background-color: rgb(51, 51, 51);
     }
   }
 
   &--loading {
     .quiz-template__background {
-      background-image: url("@/assets/Loading Results.jpg");
-      background-color: $color-bg-page;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.5) 0%,
-          rgba(0, 0, 0, 0.7) 100%
-        );
-      }
+      background-color: rgb(51, 51, 51);
     }
   }
 

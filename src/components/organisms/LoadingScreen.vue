@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BaseText from "@/components/atoms/BaseText.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="loading-screen">
@@ -12,17 +10,7 @@ import BaseText from "@/components/atoms/BaseText.vue";
           class="loading-screen__gif"
         />
       </div>
-      <BaseText tag="h2" variant="subheading" color="light" uppercase>
-        Finding Your Perfect Shoe
-      </BaseText>
-      <BaseText
-        tag="p"
-        variant="body"
-        color="light"
-        class="loading-screen__message"
-      >
-        Analyzing your preferences...
-      </BaseText>
+      <p class="loading-screen__text">We're running to get your results.</p>
     </div>
   </div>
 </template>
@@ -41,13 +29,17 @@ import BaseText from "@/components/atoms/BaseText.vue";
 
   &__content {
     @include flex-column-center;
-    gap: $spacing-lg;
+    gap: $spacing-xl;
   }
 
   &__loader {
-    width: 120px;
-    height: 120px;
-    margin-bottom: $spacing-xl;
+    width: 80px;
+    height: 80px;
+
+    @media (min-width: $breakpoint-md) {
+      width: 100px;
+      height: 100px;
+    }
   }
 
   &__gif {
@@ -56,9 +48,21 @@ import BaseText from "@/components/atoms/BaseText.vue";
     object-fit: contain;
   }
 
-  &__message {
-    opacity: 0.8;
-    animation: pulse 1.5s ease-in-out infinite;
+  &__text {
+    font-family: $font-primary;
+    font-weight: $font-weight-light;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    letter-spacing: 0.5px;
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.5rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 1.75rem;
+    }
   }
 }
 
@@ -68,16 +72,6 @@ import BaseText from "@/components/atoms/BaseText.vue";
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 0.4;
   }
 }
 </style>

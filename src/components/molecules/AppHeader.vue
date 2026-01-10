@@ -38,7 +38,7 @@ const goToQuiz = () => {
       </button>
 
       <!-- Logo -->
-      <div class="app-header__logo">
+      <div class="app-header__logo" @click="goToHome">
         <svg
           width="54"
           height="54"
