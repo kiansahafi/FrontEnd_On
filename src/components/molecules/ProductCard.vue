@@ -17,6 +17,19 @@ const selectColor = (index: number) => {
   selectedColorIndex.value = index;
 };
 
+const getColorStyle = (color: ShoeColor) => {
+  if (Array.isArray(color.hex)) {
+    // Two colors - create half-and-half gradient
+    return {
+      background: `linear-gradient(180deg, ${color.hex[0]} 50%, ${color.hex[1]} 50%)`,
+    };
+  }
+  // Single color
+  return {
+    backgroundColor: color.hex,
+  };
+};
+
 // Map shoe IDs to image paths
 const getShoeImage = (shoeId: string): string => {
   const imageMap: Record<string, string> = {
@@ -65,7 +78,7 @@ const getShoeImage = (shoeId: string): string => {
             'product-card__color-swatch--selected':
               index === selectedColorIndex,
           }"
-          :style="{ backgroundColor: color.hex }"
+          :style="getColorStyle(color)"
           :aria-label="`Select ${color.name}`"
           @click="selectColor(index)"
         ></button>

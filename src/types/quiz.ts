@@ -2,7 +2,7 @@
 
 export interface ShoeColor {
   name: string;
-  hex: string;
+  hex: string | [string, string]; // Single color or two colors for half-and-half display
 }
 
 export interface Shoe {
