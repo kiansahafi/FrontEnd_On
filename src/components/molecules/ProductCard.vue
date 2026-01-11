@@ -67,7 +67,9 @@ const getShoeImage = (shoeId: string): string => {
       <div class="product-card__price-color">
         <span class="product-card__price">{{ shoe.price }}</span>
         <span class="product-card__divider">|</span>
-        <span class="product-card__color-name">{{ selectedColor().name }}</span>
+        <span class="product-card__color-name">{{
+          selectedColor()?.name
+        }}</span>
       </div>
       <div class="product-card__colors">
         <button

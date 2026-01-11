@@ -24,7 +24,7 @@ const similarShoes = computed(() => props.topShoes.slice(1));
       <div class="results-screen__header">
         <h1 class="results-screen__title">Congratulations!</h1>
         <p class="results-screen__subtitle">
-          Based on your selection we've decided on the {{ mainShoe.name }}!
+          Based on your selection we've decided on the {{ mainShoe?.name }}!
           Enjoy the 30 day trial!
         </p>
       </div>

@@ -1,117 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import type {
-  Shoe,
-  Question,
-  Answer,
-  QuizState,
-  QuizData,
-  ShoeColor,
-} from "@/types/quiz";
+import type { Shoe, Question, Answer, QuizState, QuizData } from "@/types/quiz";
 import quizData from "../../data.json";
-
-// Extended shoe data with descriptions, prices, and colors
-const shoeExtendedData: Record<
-  string,
-  { description: string; price: string; colors: ShoeColor[] }
-> = {
-  cloud: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudx: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudflow: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudventure: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudsurfer: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudventure_waterproof: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "220 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudventure_peak: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "230 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-  cloudflyer: {
-    description:
-      "Your perfect partner in the world's lightest fully-cushioned shoe for Running Remixed.",
-    price: "200 CHF",
-    colors: [
-      { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
-      { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
-      { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
-      { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
-      { name: "Black", hex: ["#1a1a1a", "#333333"] },
-    ],
-  },
-};
 
 export const useQuizStore = defineStore("quiz", () => {
   // State
@@ -124,20 +14,19 @@ export const useQuizStore = defineStore("quiz", () => {
   // Initialize data
   const initializeQuiz = () => {
     const data = quizData as QuizData;
-    shoes.value = data.shoes.map((shoe) => {
-      const extended = shoeExtendedData[shoe.id] || {
-        description: "Premium running shoe designed for performance.",
-        price: "200 CHF",
-        colors: [{ name: "Black", hex: ["#1a1a1a", "#333333"] }],
-      };
-      return {
-        ...shoe,
-        rating: 0,
-        description: extended.description,
-        price: extended.price,
-        colors: extended.colors,
-      };
-    });
+    shoes.value = data.shoes.map((shoe) => ({
+      ...shoe,
+      rating: 0,
+      description: "Premium running shoe designed for performance.",
+      price: "200 CHF",
+      colors: [
+        { name: "Neon & Grey", hex: ["#d4ff00", "#c4c4a0"] },
+        { name: "Red & Black", hex: ["#8b0000", "#1a1a1a"] },
+        { name: "Navy Blue", hex: ["#1a3a5c", "#4a90e2"] },
+        { name: "Midnight", hex: ["#2c3e50", "#34495e"] },
+        { name: "Black", hex: ["#1a1a1a", "#333333"] },
+      ],
+    }));
     questions.value = data.questions;
     currentQuestionIndex.value = 0;
     answeredQuestions.value = [];
