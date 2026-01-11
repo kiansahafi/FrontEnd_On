@@ -33,11 +33,11 @@ defineEmits<{
           alt="Runner"
           class="start-screen__runner-image"
         />
+
+        <!-- Gradient overlay that actually sits ON TOP of the runner -->
+        <div class="start-screen__gradient-overlay" aria-hidden="true"></div>
       </div>
     </div>
-
-    <!-- White gradient overlay from bottom -->
-    <div class="start-screen__gradient-overlay"></div>
   </div>
 </template>
 
@@ -58,30 +58,43 @@ defineEmits<{
     flex-direction: column;
     min-height: calc(100vh - 86px);
     padding: $spacing-xl $spacing-lg;
+
+    /* key: allow absolutely-positioned runner on mobile */
     position: relative;
     z-index: 2;
 
+    justify-content: center;
+
+    /* key: reserve space so runner can overlap upward without forcing big gaps */
+    padding-bottom: clamp(120px, 18vh, 220px);
+
     @media (min-width: $breakpoint-sm) {
       padding: $spacing-2xl $spacing-xl;
+      padding-bottom: clamp(140px, 18vh, 260px);
     }
 
     @media (min-width: $breakpoint-md) {
       flex-direction: row;
       align-items: center;
       padding: $spacing-3xl;
+      justify-content: flex-start;
+
+      /* reset mobile reserve on desktop layout */
+      padding-bottom: $spacing-3xl;
     }
 
     @media (min-width: $breakpoint-lg) {
       max-width: 1400px;
       margin: 0 auto;
       padding: $spacing-3xl $spacing-2xl;
+      padding-bottom: $spacing-3xl;
     }
   }
 
   &__text-section {
     flex: 0 0 auto;
     z-index: 3;
-    padding-bottom: $spacing-md;
+    padding-bottom: clamp(5rem, 14vh, 9rem);
 
     @media (min-width: $breakpoint-sm) {
       padding-bottom: $spacing-lg;
@@ -142,37 +155,50 @@ defineEmits<{
   }
 
   &__image-section {
-    flex: 1;
+    // MOBILE
+    position: absolute;
+    left: 0;
+    right: -5.5rem;
+    bottom: calc(env(safe-area-inset-bottom) + 8px);
     display: flex;
-    align-items: flex-start;
     justify-content: flex-end;
-    position: relative;
-    min-height: 300px;
-    margin-right: -$spacing-lg;
+    align-items: flex-end;
+
+    // keep it behind the text
+    z-index: 1;
+
+    // don’t block clicks on button
+    pointer-events: none;
 
     @media (min-width: $breakpoint-sm) {
-      min-height: 400px;
-      margin-right: -$spacing-xl;
+      right: -$spacing-xl;
     }
 
+    // DESKTOP/TABLET: go back to normal flex layout
     @media (min-width: $breakpoint-md) {
-      min-height: auto;
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+
+      flex: 1;
+      display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-right: 0;
+
+      pointer-events: auto;
+      z-index: 2;
     }
   }
 
   &__runner-image {
-    max-width: 100%;
-    max-height: 55vh;
+    max-width: 110%;
     object-fit: contain;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
-    @media (min-width: $breakpoint-sm) {
-      max-height: 65vh;
-    }
+    /* key: make it tall enough so it reaches up toward the button */
+    max-height: clamp(540px, 78vh, 920px);
 
     @media (min-width: $breakpoint-md) {
       max-height: 80vh;
@@ -185,20 +211,24 @@ defineEmits<{
   }
 
   &__gradient-overlay {
+    /* gradient must be inside the image section to overlay the runner */
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    height: 30%;
+    bottom: 0;
+
+    height: clamp(110px, 18vh, 220px);
+    pointer-events: none;
+    z-index: 2;
+
+    /* key: use the page background color so it’s actually visible */
     background: linear-gradient(
       to top,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 20%,
-      rgba(247, 247, 247, 0.6) 50%,
-      rgba(247, 247, 247, 0) 100%
+      rgba($color-bg-page, 1) 0%,
+      rgba($color-bg-page, 1) 35%,
+      rgba($color-bg-page, 0.35) 70%,
+      rgba($color-bg-page, 0) 100%
     );
-    z-index: 3;
-    pointer-events: none;
   }
 }
 
