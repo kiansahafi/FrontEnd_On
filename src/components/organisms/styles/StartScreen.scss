@@ -1,0 +1,177 @@
+@use "@/assets/styles/variables" as *;
+@use "@/assets/styles/mixins" as *;
+
+.start-screen {
+  min-height: calc(100vh - 86px);
+  padding-top: 86px;
+  background-color: $color-bg-page;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn $transition-slow forwards;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 86px);
+    padding: $spacing-xl $spacing-lg;
+    position: relative;
+    z-index: 2;
+    justify-content: center;
+    padding-bottom: clamp(120px, 18vh, 220px);
+
+    @media (min-width: $breakpoint-sm) {
+      padding: $spacing-2xl $spacing-xl;
+      padding-bottom: clamp(140px, 18vh, 260px);
+    }
+
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
+      padding: $spacing-3xl;
+      justify-content: flex-start;
+      padding-bottom: $spacing-3xl;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: $spacing-3xl $spacing-2xl;
+      padding-bottom: $spacing-3xl;
+    }
+  }
+
+  &__text-section {
+    flex: 0 0 auto;
+    z-index: 3;
+    padding-bottom: clamp(5rem, 14vh, 9rem);
+
+    @media (min-width: $breakpoint-sm) {
+      padding-bottom: $spacing-lg;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      flex: 1;
+      padding-bottom: 0;
+      max-width: 50%;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-weight: $font-weight-light;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: $color-text-dark;
+    margin: 0 0 $spacing-lg;
+    letter-spacing: -0.5px;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 2.25rem;
+      margin: 0 0 $spacing-xl;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 4rem;
+    }
+  }
+
+  &__title-line {
+    display: block;
+  }
+
+  &__button {
+    margin-bottom: $spacing-md;
+
+    @media (min-width: $breakpoint-sm) {
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-secondary;
+    font-size: $font-size-xs;
+    color: $color-gray-dark;
+    margin: 0;
+    letter-spacing: 0.5px;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &__image-section {
+    position: absolute;
+    left: 0;
+    right: -5.5rem;
+    bottom: calc(env(safe-area-inset-bottom) + 8px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index: 1;
+    pointer-events: none;
+
+    @media (min-width: $breakpoint-sm) {
+      right: -$spacing-xl;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      pointer-events: auto;
+      z-index: 2;
+    }
+  }
+
+  &__runner-image {
+    max-width: 110%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    max-height: clamp(540px, 78vh, 920px);
+
+    @media (min-width: $breakpoint-md) {
+      max-height: 80vh;
+      max-width: 90%;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      max-height: 85vh;
+    }
+  }
+
+  &__gradient-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: clamp(110px, 18vh, 220px);
+    pointer-events: none;
+    z-index: 2;
+    background: linear-gradient(
+      to top,
+      rgba($color-bg-page, 1) 0%,
+      rgba($color-bg-page, 1) 35%,
+      rgba($color-bg-page, 0.35) 70%,
+      rgba($color-bg-page, 0) 100%
+    );
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,100 @@
+@use "@/assets/styles/variables" as *;
+
+.product-card {
+  background-color: rgb(247, 247, 247);
+  overflow: hidden;
+  animation: fadeInUp 0.5s ease forwards;
+
+  &__image-container {
+    width: 100%;
+    padding: $spacing-xl $spacing-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__content {
+    padding: $spacing-lg $spacing-xl $spacing-xl;
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-weight: $font-weight-regular;
+    font-size: 1.25rem;
+    color: rgb(51, 51, 51);
+    margin: 0 0 $spacing-sm;
+    letter-spacing: 0.5px;
+  }
+
+  &__description {
+    font-family: $font-primary;
+    font-weight: $font-weight-light;
+    font-size: 0.875rem;
+    color: rgb(102, 102, 102);
+    line-height: 1.5;
+    margin: 0 0 $spacing-md;
+  }
+
+  &__price-color {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    font-family: $font-primary;
+    font-size: 0.875rem;
+  }
+
+  &__price {
+    font-weight: $font-weight-medium;
+    color: rgb(51, 51, 51);
+  }
+
+  &__divider {
+    color: rgb(153, 153, 153);
+  }
+
+  &__color-name {
+    font-weight: $font-weight-light;
+    color: rgb(102, 102, 102);
+  }
+
+  &__colors {
+    display: flex;
+    gap: $spacing-xs;
+  }
+
+  &__color-swatch {
+    width: 24px;
+    height: 24px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    padding: 0;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &--selected {
+      border-color: rgb(51, 51, 51);
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

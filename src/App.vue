@@ -6,6 +6,4 @@ import { RouterView } from "vue-router";
   <RouterView />
 </template>
 
-<style lang="scss">
-// Global styles are imported in main.ts
-</style>
+<style lang="scss"></style>

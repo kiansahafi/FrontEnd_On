@@ -19,22 +19,4 @@ withDefaults(defineProps<Props>(), {
   />
 </template>
 
-<style scoped lang="scss">
-.base-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-
-  &--cover {
-    object-fit: cover;
-  }
-
-  &--contain {
-    object-fit: contain;
-  }
-
-  &--fill {
-    object-fit: fill;
-  }
-}
-</style>
+<style scoped lang="scss" src="./styles/BaseImage.scss"></style>

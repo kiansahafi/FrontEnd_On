@@ -22,16 +22,4 @@ defineProps<Props>();
   </div>
 </template>
 
-<style scoped lang="scss">
-@use "@/assets/styles/variables" as *;
-
-.question-progress {
-  width: 100%;
-  max-width: 400px;
-
-  &__info {
-    margin-bottom: $spacing-sm;
-    text-align: center;
-  }
-}
-</style>
+<style scoped lang="scss" src="./styles/QuestionProgress.scss"></style>

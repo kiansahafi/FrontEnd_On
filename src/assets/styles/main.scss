@@ -1,7 +1,6 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-// Reset & Base Styles
 *,
 *::before,
 *::after {
@@ -23,7 +22,6 @@ body {
   background-color: $color-bg-page;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // Prevent text selection
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -50,7 +48,6 @@ ol {
   list-style: none;
 }
 
-// Utility Classes
 .container {
   width: 100%;
   max-width: 1200px;
@@ -70,7 +67,6 @@ ol {
   border: 0;
 }
 
-// Animations
 @keyframes fadeIn {
   from {
     opacity: 0;

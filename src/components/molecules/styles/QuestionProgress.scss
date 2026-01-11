@@ -1,0 +1,11 @@
+@use "@/assets/styles/variables" as *;
+
+.question-progress {
+  width: 100%;
+  max-width: 400px;
+
+  &__info {
+    margin-bottom: $spacing-sm;
+    text-align: center;
+  }
+}

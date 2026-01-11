@@ -1,6 +1,5 @@
 @use "variables" as *;
 
-// Flexbox mixins
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -18,7 +17,6 @@
   align-items: center;
 }
 
-// Typography mixins
 @mixin heading-primary {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
@@ -32,7 +30,6 @@
   line-height: 1.6;
 }
 
-// Responsive mixins
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "sm" {
     @media (min-width: $breakpoint-sm) {
@@ -53,7 +50,6 @@
   }
 }
 
-// Button mixin
 @mixin button-base {
   display: inline-flex;
   align-items: center;
@@ -73,7 +69,6 @@
   }
 }
 
-// Full screen background
 @mixin full-screen-bg {
   position: fixed;
   top: 0;
@@ -85,7 +80,6 @@
   background-repeat: no-repeat;
 }
 
-// Overlay
 @mixin overlay($opacity: 0.5) {
   &::before {
     content: "";

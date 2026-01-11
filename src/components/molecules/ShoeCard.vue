@@ -10,7 +10,6 @@ interface Props {
 
 defineProps<Props>();
 
-// Map shoe IDs to image paths
 const getShoeImage = (shoeId: string): string => {
   const imageMap: Record<string, string> = {
     cloud: new URL("@/assets/Cloud.png", import.meta.url).href,
@@ -61,62 +60,4 @@ const getShoeImage = (shoeId: string): string => {
   </div>
 </template>
 
-<style scoped lang="scss">
-@use "@/assets/styles/variables" as *;
-
-.shoe-card {
-  display: flex;
-  align-items: center;
-  gap: $spacing-lg;
-  padding: $spacing-lg;
-  background-color: $color-secondary;
-  border: 1px solid $color-gray-medium;
-  transition: all $transition-normal;
-  animation: fadeInUp $transition-slow forwards;
-
-  &--winner {
-    border-color: $color-primary;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transform: scale(1.02);
-  }
-
-  &:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  &__rank {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    flex-shrink: 0;
-  }
-
-  &__image {
-    width: 150px;
-    height: 100px;
-    flex-shrink: 0;
-
-    @media (max-width: $breakpoint-md) {
-      width: 100px;
-      height: 70px;
-    }
-  }
-
-  &__info {
-    flex: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
+<style scoped lang="scss" src="./styles/ShoeCard.scss"></style>

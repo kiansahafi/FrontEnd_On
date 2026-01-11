@@ -12,13 +12,11 @@ const quizStore = useQuizStore();
 <template>
   <QuizTemplate :state="quizStore.state">
     <Transition name="fade" mode="out-in">
-      <!-- Start Screen -->
       <StartScreen
         v-if="quizStore.state === 'start'"
         @start="quizStore.startQuiz"
       />
 
-      <!-- Question Screen -->
       <QuizQuestion
         v-else-if="quizStore.state === 'question' && quizStore.currentQuestion"
         :key="quizStore.currentQuestionIndex"
@@ -29,10 +27,8 @@ const quizStore = useQuizStore();
         @answer="quizStore.answerQuestion"
       />
 
-      <!-- Loading Screen -->
       <LoadingScreen v-else-if="quizStore.state === 'loading'" />
 
-      <!-- Results Screen -->
       <ResultsScreen
         v-else-if="quizStore.state === 'results'"
         :top-shoes="quizStore.topShoes"
@@ -42,14 +38,4 @@ const quizStore = useQuizStore();
   </QuizTemplate>
 </template>
 
-<style scoped lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss" src="./styles/QuizPage.scss"></style>

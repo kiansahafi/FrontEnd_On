@@ -12,19 +12,4 @@ defineProps<Props>();
   </div>
 </template>
 
-<style scoped lang="scss">
-@use "@/assets/styles/variables" as *;
-
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background-color: rgba($color-secondary, 0.3);
-  overflow: hidden;
-
-  &__fill {
-    height: 100%;
-    background-color: $color-secondary;
-    transition: width $transition-normal;
-  }
-}
-</style>
+<style scoped lang="scss" src="./styles/ProgressBar.scss"></style>
